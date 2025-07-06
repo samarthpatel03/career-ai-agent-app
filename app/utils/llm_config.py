@@ -26,13 +26,14 @@
 
 from langchain_groq import ChatGroq
 import os
+import streamlit as st
 from dotenv import load_dotenv
 
 load_dotenv()
 
 def get_openai_llm(model="llama-3.1-8b-instant"):  # you can also use llama3-8b-8192 or gemma-7b-it
     return ChatGroq(
-        api_key=os.getenv("GROQ_API_KEY"),
+        api_key=st.secrets["GROQ_API_KEY"],
         model_name=model,
         temperature=0.3
     )
